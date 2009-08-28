@@ -9,7 +9,15 @@ User agent parser.
   agent.name    # => :Safari
   agent.version # => '4.0.3'
   agent.engine  # => :webkit
+  agent.os      # => :'Windows Vista'
   agent.engine_version  # => '531.9'
+  
+== Supported Agents
+
+* Safari
+* Opera
+* IE
+* Wii
 
 == License:
 

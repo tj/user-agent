@@ -81,7 +81,7 @@ class Agent
   # Return engine version for user agent _string_.
   
   def self.engine_version_for_user_agent string
-    $1 if string =~ /#{engine_for_user_agent(string)}\/([\d\w\.]+)/i
+    $1 if string =~ /#{engine_for_user_agent(string)}[\/ ]([\d\w\.]+)/i
   end
   
   ##
@@ -115,13 +115,14 @@ class Agent
   
   def self.os_for_user_agent string
     case string
-    when /windows nt 6.1/i      ; :'Windows 7'
-    when /windows nt 6.0/i      ; :'Windows Vista'
-    when /windows nt 5.2/i      ; :'Windows 2003'
-    when /windows nt 5.1/i      ; :'Windows XP'
-    when /windows nt 5.0/i      ; :'Windows 2000'
+    when /windows nt 6\.0/i     ; :'Windows Vista'
+    when /windows nt 6\.\d+/i   ; :'Windows 7'
+    when /windows nt 5\.2/i     ; :'Windows 2003'
+    when /windows nt 5\.1/i     ; :'Windows XP'
+    when /windows nt 5\.0/i     ; :'Windows 2000'
     when /os x (\d+)[._](\d+)/i ; :"OS X #{$1}.#{$2}"
     when /linux/i               ; :Linux
+    when /wii/i                 ; :Wii
     else                        ; :Unknown
     end
   end

@@ -11,7 +11,7 @@ describe Agent do
       ['4.0',    'Mozilla/5.0 (Windows; U; Windows NT 6.0; ru-RU) AppleWebKit/528.16 (KHTML, like Gecko) Version/4.0 Safari/528.16'],
       ['3.2.3',  'Mozilla/5.0 (Windows; U; Windows NT 5.1; cs-CZ) AppleWebKit/525.28.3 (KHTML, like Gecko) Version/3.2.3 Safari/525.29'],
     ].each do |version, string|
-      it "should parse version '#{version}'" do
+      it "should parse version #{version}" do
         Agent.new(string).name.should == :Safari
         Agent.new(string).version.should == version
       end
@@ -28,11 +28,29 @@ describe Agent do
       ['6.0',  'Mozilla/5.0 (Windows; U; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)'],
     ].each do |version, string|
       unless version.empty?
-        it "should parse version '#{version}'" do
+        it "should parse version #{version}" do
           Agent.new(string).name.should == :IE
           Agent.new(string).version.should == version
         end
       end
     end
   end
+  
+  describe "Opera" do
+    [
+      ['9.99', 'Opera/9.99 (Windows NT 5.1; U; pl) Presto/9.9.9'],  
+      ['9.70', 'Mozilla/5.0 (Linux i686 ; U; en; rv:1.8.1) Gecko/20061208 Firefox/2.0.0 Opera 9.70'],  
+      ['9.64', 'Opera/9.64 (X11; Linux i686; U; Linux Mint; it) Presto/2.1.1'],  
+      ['9.51', 'Mozilla/5.0 (X11; Linux i686; U; en; rv:1.8.1) Gecko/20061208 Firefox/2.0.0 Opera 9.51'],  
+      ['9.00', 'Opera/9.00 (Nintindo Wii; U; ; 103858; Wii Shop Channel/1.0; en)'],  
+    ].each do |version, string|
+      unless version.empty?
+        it "should parse version #{version}" do
+          Agent.new(string).name.should == :Opera
+          Agent.new(string).version.should == version
+        end
+      end
+    end
+  end
+  
 end

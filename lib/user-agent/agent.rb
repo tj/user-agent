@@ -90,6 +90,7 @@ class Agent
   def self.version_for_user_agent string
     case string
     when /safari/i ; $1 if string =~ /Version\/([\d\w\.]+)/i
+    when /msie/i   ; $1 if string =~ /MSIE\s*([\d\w\.]+)/i
     end
   end
   
@@ -131,6 +132,7 @@ class Agent
     case string
     when /chrome/i ; :Chrome
     when /safari/i ; :Safari
+    when /msie/i   ; :IE
     else           ; :Unknown
     end
   end

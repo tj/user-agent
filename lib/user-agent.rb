@@ -22,5 +22,4 @@
 #++
 
 require 'user-agent/agent'
-require 'user-agent/map'
 require 'user-agent/version'

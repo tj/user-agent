@@ -38,4 +38,7 @@ describe Agent do
   test :Konqueror, '4.2',     :Linux, :khtml,     '4.2.4',    'Mozilla/5.0 (compatible; Konqueror/4.2; Linux; X11; x86_64) KHTML/4.2.4 (like Gecko) Fedora/4.2.4-2.fc11'
   test :Konqueror, '3.1-rc6', :Linux, :konqueror, '3.1-rc6', 'Mozilla/5.0 (compatible; Konqueror/3.1-rc6; i686 Linux; 20021105)'
  
+  test :PS3, '2.00', :Playstation, :unknown, nil, 'Mozilla/5.0 (PLAYSTATION 3; 2.00)'
+  test :PS3, '1.10', :Playstation, :unknown, nil, 'Mozilla/5.0 (PLAYSTATION 3; 1.10)'
+ 
 end

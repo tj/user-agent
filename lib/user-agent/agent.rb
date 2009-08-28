@@ -88,11 +88,11 @@ class Agent
   # Return version for user agent _string_.
   
   def self.version_for_user_agent string
-    case string
-    when /chrome/i ; $1 if string =~ /chrome\/([\d\w\.\-]+)/i
-    when /safari/i ; $1 if string =~ /version\/([\d\w\.\-]+)/i
-    else
-      $1 if string =~ /#{name_for_user_agent(string)}[\/ ]([\d\w\.\-]+)/i
+    case name = name_for_user_agent(string)
+    when :Chrome ; $1 if string =~ /chrome\/([\d\w\.\-]+)/i
+    when :Safari ; $1 if string =~ /version\/([\d\w\.\-]+)/i
+    when :PS3    ; $1 if string =~ /([\d\w\.\-]+)\)\s*$/i
+    else           $1 if string =~ /#{name}[\/ ]([\d\w\.\-]+)/i
     end
   end
   
@@ -125,6 +125,7 @@ class Agent
     when /os x (\d+)[._](\d+)/i ; :"OS X #{$1}.#{$2}"
     when /linux/i               ; :Linux
     when /wii/i                 ; :Wii
+    when /playstation 3/i       ; :Playstation
     else                        ; :Unknown
     end
   end
@@ -134,12 +135,13 @@ class Agent
   
   def self.name_for_user_agent string
     case string
-    when /konqueror/i ; :Konqueror
-    when /chrome/i    ; :Chrome
-    when /safari/i    ; :Safari
-    when /msie/i      ; :IE
-    when /opera/i     ; :Opera
-    else              ; :Unknown
+    when /konqueror/i     ; :Konqueror
+    when /chrome/i        ; :Chrome
+    when /safari/i        ; :Safari
+    when /msie/i          ; :IE
+    when /opera/i         ; :Opera
+    when /playstation 3/i ; :PS3
+    else                  ; :Unknown
     end
   end
   

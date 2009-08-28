@@ -19,6 +19,7 @@ User agent parser.
 * Opera
 * IE
 * Konqueror
+* PS3
 * Wii
 
 == License:

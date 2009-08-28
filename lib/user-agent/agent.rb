@@ -70,7 +70,7 @@ class Agent
   # Check if the agent is the same as _other_ agent.
   
   def == other
-    self.string == other.string
+    string == other.string
   end
   
   #--

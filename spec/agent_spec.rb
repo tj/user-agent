@@ -47,4 +47,18 @@ describe Agent do
       @agent.name.should == :'Safari'
     end
   end
+  
+  describe "#==" do
+    it "should be equal when the user agent strings are the same" do
+      a = Agent.new 'foo'
+      b = Agent.new 'foo'
+      a.should == b
+    end
+    
+    it "should not be equal when user agent strings are different" do
+      a = Agent.new 'foo'
+      b = Agent.new 'bar'
+      a.should_not == b
+    end
+  end
 end

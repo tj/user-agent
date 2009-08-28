@@ -15,8 +15,10 @@ User agent parser.
 == Supported Agents
 
 * Safari
+* Chrome
 * Opera
 * IE
+* Konqueror
 * Wii
 
 == License:

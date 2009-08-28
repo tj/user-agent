@@ -34,4 +34,8 @@ describe Agent do
   test :Chrome, '4.0.202.2',  :Linux,           :webkit, '532.0',  'Mozilla/5.0 (X11; U; Linux i686 (x86_64); en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/4.0.202.2 Safari/532.0'
   test :Chrome, '0.2.149.27', :'Windows 2003',  :webkit, '525.13', 'Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13'
   test :Chrome, '0.2.149.30', :'Windows Vista', :webkit, '525.13', 'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.30 Safari/525.13'
+
+  test :Konqueror, '4.2',     :Linux, :khtml,     '4.2.4',    'Mozilla/5.0 (compatible; Konqueror/4.2; Linux; X11; x86_64) KHTML/4.2.4 (like Gecko) Fedora/4.2.4-2.fc11'
+  test :Konqueror, '3.1-rc6', :Linux, :konqueror, '3.1-rc6', 'Mozilla/5.0 (compatible; Konqueror/3.1-rc6; i686 Linux; 20021105)'
+ 
 end

@@ -81,7 +81,7 @@ class Agent
   # Return engine version for user agent _string_.
   
   def self.engine_version_for_user_agent string
-    $1 if string =~ /#{engine_for_user_agent(string)}[\/ ]([\d\w\.]+)/i
+    $1 if string =~ /#{engine_for_user_agent(string)}[\/ ]([\d\w\.\-]+)/i
   end
   
   ##
@@ -89,9 +89,10 @@ class Agent
   
   def self.version_for_user_agent string
     case string
-    when /chrome/i ; $1 if string =~ /chrome\/([\d\w\.]+)/i
-    when /safari/i ; $1 if string =~ /version\/([\d\w\.]+)/i
-    else             $1 if string =~ /#{name_for_user_agent(string)}[\/ ]([\d\w\.]+)/i
+    when /chrome/i ; $1 if string =~ /chrome\/([\d\w\.\-]+)/i
+    when /safari/i ; $1 if string =~ /version\/([\d\w\.\-]+)/i
+    else
+      $1 if string =~ /#{name_for_user_agent(string)}[\/ ]([\d\w\.\-]+)/i
     end
   end
   
@@ -100,8 +101,9 @@ class Agent
   
   def self.engine_for_user_agent string
     case string
-    when /konqueror/i ; :konqueror
     when /webkit/i    ; :webkit
+    when /khtml/i     ; :khtml
+    when /konqueror/i ; :konqueror
     when /chrome/i    ; :chrome
     when /presto/i    ; :presto
     when /gecko/i     ; :gecko
@@ -132,11 +134,12 @@ class Agent
   
   def self.name_for_user_agent string
     case string
-    when /chrome/i ; :Chrome
-    when /safari/i ; :Safari
-    when /msie/i   ; :IE
-    when /opera/i  ; :Opera
-    else           ; :Unknown
+    when /konqueror/i ; :Konqueror
+    when /chrome/i    ; :Chrome
+    when /safari/i    ; :Safari
+    when /msie/i      ; :IE
+    when /opera/i     ; :Opera
+    else              ; :Unknown
     end
   end
   

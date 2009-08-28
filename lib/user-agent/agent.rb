@@ -89,9 +89,9 @@ class Agent
   
   def self.version_for_user_agent string
     case string
+    when /chrome/i ; $1 if string =~ /chrome\/([\d\w\.]+)/i
     when /safari/i ; $1 if string =~ /version\/([\d\w\.]+)/i
-    when /msie/i   ; $1 if string =~ /msie\s*([\d\w\.]+)/i
-    when /opera/i  ; $1 if string =~ /opera[\/ ]([\d\w\.]+)/i
+    else             $1 if string =~ /#{name_for_user_agent(string)}[\/ ]([\d\w\.]+)/i
     end
   end
   
@@ -100,9 +100,9 @@ class Agent
   
   def self.engine_for_user_agent string
     case string
-    when /chrome/i    ; :chrome
     when /konqueror/i ; :konqueror
     when /webkit/i    ; :webkit
+    when /chrome/i    ; :chrome
     when /presto/i    ; :presto
     when /gecko/i     ; :gecko
     when /msie/i      ; :msie

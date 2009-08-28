@@ -25,6 +25,13 @@ class Agent
   end
   
   ##
+  # User agent version.
+  
+  def version
+    Agent.version_for_user_agent string
+  end
+  
+  ##
   # User agent engine symbol.
   
   def engine
@@ -32,10 +39,10 @@ class Agent
   end
   
   ##
-  # User agent version string.
+  # User agent engine version string.
   
-  def version
-    Agent.version_for_user_agent string
+  def engine_version
+    Agent.engine_version_for_user_agent string
   end
   
   ##
@@ -56,7 +63,7 @@ class Agent
   # Inspect.
   
   def inspect
-    "#<Agent name:#{name.to_s.inspect} engine:#{engine.to_s.inspect} os:#{os.to_s.inspect} version:#{version.inspect}>"
+    "#<Agent:#{name} version:#{version.inspect} engine:\"#{engine.to_s}:#{engine_version}\" os:#{os.to_s.inspect}>"
   end
   
   ##
@@ -71,10 +78,19 @@ class Agent
   #++
   
   ##
+  # Return engine version for user agent _string_.
+  
+  def self.engine_version_for_user_agent string
+    $1 if string =~ /#{engine_for_user_agent(string)}\/([\d\w\.]+)/i
+  end
+  
+  ##
   # Return version for user agent _string_.
   
   def self.version_for_user_agent string
-    $1 if string =~ /#{engine_for_user_agent(string)}\/([\d\w\.]+)/i
+    case string
+    when /safari/i ; $1 if string =~ /Version\/([\d\w\.]+)/i
+    end
   end
   
   ##
@@ -112,12 +128,11 @@ class Agent
   # Return name for user agent _string_.
   
   def self.name_for_user_agent string
-    version = version_for_user_agent string
-    engine = engine_for_user_agent string
-    info = @agents.find do |name, info|
-      info[:engine] == engine && info[:version].match(version)
+    case string
+    when /chrome/i ; :Chrome
+    when /safari/i ; :Safari
+    else           ; :Unknown
     end
-    info.first if info
   end
   
   @agents = []

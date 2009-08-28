@@ -20,6 +20,7 @@ User agent parser.
 * IE
 * Konqueror
 * PS3
+* PSP
 * Wii
 
 == License:

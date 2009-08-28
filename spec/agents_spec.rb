@@ -40,5 +40,8 @@ describe Agent do
  
   test :PS3, '2.00', :Playstation, :unknown, nil, 'Mozilla/5.0 (PLAYSTATION 3; 2.00)'
   test :PS3, '1.10', :Playstation, :unknown, nil, 'Mozilla/5.0 (PLAYSTATION 3; 1.10)'
+  
+  test :PSP, '2.00', :Playstation, :unknown, nil, 'PSP (PlayStation Portable); 2.00'
+  test :PSP, '2.00', :Playstation, :unknown, nil, 'Mozilla/4.0 (PSP (PlayStation Portable); 2.00)'
  
 end

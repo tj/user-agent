@@ -92,6 +92,7 @@ class Agent
     when :Chrome ; $1 if string =~ /chrome\/([\d\w\.\-]+)/i
     when :Safari ; $1 if string =~ /version\/([\d\w\.\-]+)/i
     when :PS3    ; $1 if string =~ /([\d\w\.\-]+)\)\s*$/i
+    when :PSP    ; $1 if string =~ /([\d\w\.\-]+)\)?\s*$/i
     else           $1 if string =~ /#{name}[\/ ]([\d\w\.\-]+)/i
     end
   end
@@ -117,16 +118,17 @@ class Agent
   
   def self.os_for_user_agent string
     case string
-    when /windows nt 6\.0/i     ; :'Windows Vista'
-    when /windows nt 6\.\d+/i   ; :'Windows 7'
-    when /windows nt 5\.2/i     ; :'Windows 2003'
-    when /windows nt 5\.1/i     ; :'Windows XP'
-    when /windows nt 5\.0/i     ; :'Windows 2000'
-    when /os x (\d+)[._](\d+)/i ; :"OS X #{$1}.#{$2}"
-    when /linux/i               ; :Linux
-    when /wii/i                 ; :Wii
-    when /playstation 3/i       ; :Playstation
-    else                        ; :Unknown
+    when /windows nt 6\.0/i      ; :'Windows Vista'
+    when /windows nt 6\.\d+/i    ; :'Windows 7'
+    when /windows nt 5\.2/i      ; :'Windows 2003'
+    when /windows nt 5\.1/i      ; :'Windows XP'
+    when /windows nt 5\.0/i      ; :'Windows 2000'
+    when /os x (\d+)[._](\d+)/i  ; :"OS X #{$1}.#{$2}"
+    when /linux/i                ; :Linux
+    when /wii/i                  ; :Wii
+    when /playstation 3/i        ; :Playstation
+    when /playstation portable/i ; :Playstation
+    else                         ; :Unknown
     end
   end
   
@@ -135,13 +137,14 @@ class Agent
   
   def self.name_for_user_agent string
     case string
-    when /konqueror/i     ; :Konqueror
-    when /chrome/i        ; :Chrome
-    when /safari/i        ; :Safari
-    when /msie/i          ; :IE
-    when /opera/i         ; :Opera
-    when /playstation 3/i ; :PS3
-    else                  ; :Unknown
+    when /konqueror/i            ; :Konqueror
+    when /chrome/i               ; :Chrome
+    when /safari/i               ; :Safari
+    when /msie/i                 ; :IE
+    when /opera/i                ; :Opera
+    when /playstation 3/i        ; :PS3
+    when /playstation portable/i ; :PSP
+    else                         ; :Unknown
     end
   end
   

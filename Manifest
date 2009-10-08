@@ -1,10 +1,10 @@
 History.rdoc
+Manifest
+README.rdoc
+Rakefile
+lib/user-agent.rb
 lib/user-agent/agent.rb
 lib/user-agent/version.rb
-lib/user-agent.rb
-Manifest
-Rakefile
-README.rdoc
 spec/agent_spec.rb
 spec/agents_spec.rb
 spec/spec.opts

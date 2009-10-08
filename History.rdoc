@@ -1,4 +1,8 @@
 
+=== 1.0.0 / 2009-10-08
+
+* Specs for Agent#==
+
 === 0.0.1 / 2009-08-28
 
 * Initial release

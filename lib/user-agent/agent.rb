@@ -10,7 +10,7 @@ class Agent
   # Initialize with user agent _string_.
   
   def initialize string
-    @string = string
+    @string = string.strip
   end
   
   #--

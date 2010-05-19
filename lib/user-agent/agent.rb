@@ -86,7 +86,8 @@ class Agent
 
   ##
   # Return version for user agent _string_.
-
+# Mozilla/5.0 (Windows; U; Windows NT 6.0; en-us) AppleWebKit/531.9 (KHTML, like Gecko) Version/4.0.3 Safari/531.9
+# Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10
   def self.version_for_user_agent string
     case name = name_for_user_agent(string)
     when :Chrome ; $1 if string =~ /chrome\/([\d\w\.\-]+)/i
@@ -118,17 +119,19 @@ class Agent
 
   def self.os_for_user_agent string
     case string
-    when /windows nt 6\.0/i      ; :'Windows Vista'
-    when /windows nt 6\.\d+/i    ; :'Windows 7'
-    when /windows nt 5\.2/i      ; :'Windows 2003'
-    when /windows nt 5\.1/i      ; :'Windows XP'
-    when /windows nt 5\.0/i      ; :'Windows 2000'
-    when /os x (\d+)[._](\d+)/i  ; :"OS X #{$1}.#{$2}"
-    when /linux/i                ; :Linux
-    when /wii/i                  ; :Wii
-    when /playstation 3/i        ; :Playstation
-    when /playstation portable/i ; :Playstation
-    else                         ; :Unknown
+    when /windows nt 6\.0/i             ; :'Windows Vista'
+    when /windows nt 6\.\d+/i           ; :'Windows 7'
+    when /windows nt 5\.2/i             ; :'Windows 2003'
+    when /windows nt 5\.1/i             ; :'Windows XP'
+    when /windows nt 5\.0/i             ; :'Windows 2000'
+    when /os x (\d+)[._](\d+)/i         ; :"OS X #{$1}.#{$2}"
+    when /linux/i                       ; :Linux
+    when /wii/i                         ; :Wii
+    when /playstation 3/i               ; :Playstation
+    when /playstation portable/i        ; :Playstation
+    when /\(iPad.*os (\d+)[._](\d+)/i   ; :"iPad OS #{$1}.#{$2}"
+    when /\(iPhone.*os (\d+)[._](\d+)/i ; :"iPhone OS #{$1}.#{$2}"
+    else                                ; :Unknown
     end
   end
 

@@ -22,6 +22,8 @@ User agent parser.
 * PS3
 * PSP
 * Wii
+* iPad
+* iPhone
 
 == License:
 

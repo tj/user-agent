@@ -1,93 +1,54 @@
 
 class Agent
 
-  ##
-  # User agent string.
-
   attr_reader :string
-
-  ##
-  # Initialize with user agent _string_.
 
   def initialize string
     @string = string.strip
   end
 
-  #--
-  # Instance methods
-  #++
-
-  ##
-  # User agent name symbol.
-
   def name
     Agent.name_for_user_agent string
   end
-
-  ##
-  # User agent version.
 
   def version
     Agent.version_for_user_agent string
   end
 
-  ##
-  # User agent engine symbol.
-
   def engine
     Agent.engine_for_user_agent string
   end
-
-  ##
-  # User agent engine version string.
 
   def engine_version
     Agent.engine_version_for_user_agent string
   end
 
-  ##
-  # User agent os symbol.
-
   def os
     Agent.os_for_user_agent string
   end
-
-  ##
-  # User agent string.
+  
+  def platform
+    Agent.platform_for_user_agent string
+  end
 
   def to_s
     string
   end
 
-  ##
-  # Inspect.
-
   def inspect
     "#<Agent:#{name} version:#{version.inspect} engine:\"#{engine.to_s}:#{engine_version}\" os:#{os.to_s.inspect}>"
   end
-
-  ##
-  # Check if the agent is the same as _other_ agent.
 
   def == other
     string == other.string
   end
 
-  #--
-  # Class methods
-  #++
 
-  ##
-  # Return engine version for user agent _string_.
 
   def self.engine_version_for_user_agent string
     $1 if string =~ /#{engine_for_user_agent(string)}[\/ ]([\d\w\.\-]+)/i
   end
 
-  ##
-  # Return version for user agent _string_.
-# Mozilla/5.0 (Windows; U; Windows NT 6.0; en-us) AppleWebKit/531.9 (KHTML, like Gecko) Version/4.0.3 Safari/531.9
-# Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10
   def self.version_for_user_agent string
     case name = name_for_user_agent(string)
     when :Chrome ; $1 if string =~ /chrome\/([\d\w\.\-]+)/i
@@ -98,9 +59,6 @@ class Agent
     end
   end
 
-  ##
-  # Return engine symbol for user agent _string_.
-
   def self.engine_for_user_agent string
     case string
     when /webkit/i    ; :webkit
@@ -110,12 +68,9 @@ class Agent
     when /presto/i    ; :presto
     when /gecko/i     ; :gecko
     when /msie/i      ; :msie
-    else                :unknown
+    else                :Unknown
     end
   end
-
-  ##
-  # Return the os for user agent _string_.
 
   def self.os_for_user_agent string
     case string
@@ -129,14 +84,24 @@ class Agent
     when /wii/i                         ; :Wii
     when /playstation 3/i               ; :Playstation
     when /playstation portable/i        ; :Playstation
-    when /\(iPad.*os (\d+)[._](\d+)/i   ; :"iPad OS #{$1}.#{$2}"
-    when /\(iPhone.*os (\d+)[._](\d+)/i ; :"iPhone OS #{$1}.#{$2}"
+    when /\(ipad.*os (\d+)[._](\d+)/i   ; :"iPad OS #{$1}.#{$2}"
+    when /\(iphone.*os (\d+)[._](\d+)/i ; :"iPhone OS #{$1}.#{$2}"
     else                                ; :Unknown
     end
   end
-
-  ##
-  # Return name for user agent _string_.
+  
+  def self.platform_for_user_agent string
+    case string
+    when /windows/i     ; :Windows
+    when /macintosh/i   ; :Macintosh
+    when /linux/i       ; :Linux
+    when /wii/i         ; :Wii
+    when /playstation/i ; :Playstation
+    when /ipad/i        ; :iPad
+    when /iphone/i      ; :iPhone
+    else                  :Unknown
+    end
+  end
 
   def self.name_for_user_agent string
     case string
@@ -153,9 +118,6 @@ class Agent
   end
 
   @agents = []
-
-  ##
-  # Map agent _name_ to _options_.
 
   def self.map name, options = {}
     @agents << [name, options]

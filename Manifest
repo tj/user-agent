@@ -13,4 +13,3 @@ spec/spec_helper.rb
 tasks/docs.rake
 tasks/gemspec.rake
 tasks/spec.rake
-user-agent.gemspec

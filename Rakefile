@@ -5,9 +5,9 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new "user-agent", Agent::VERSION do |p|
-  p.author = "TJ Holowaychuk"
-  p.email = "tj@vision-media.ca"
+Echoe.new "cv-user-agent", Agent::VERSION do |p|
+  p.author = "Carlos Villela"
+  p.email = "cv@lixo.org"
   p.summary = "User agent parser"
   p.runtime_dependencies = []
 end

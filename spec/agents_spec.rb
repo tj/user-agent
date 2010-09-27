@@ -29,6 +29,8 @@ describe Agent do
 
   test :IE, '8.0',  :Windows, :'Windows 7',    :msie, '8.0',  'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.2; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)'
   test :IE, '7.0b', :Windows, :'Windows 2003', :msie, '7.0b', 'Mozilla/4.0 (compatible; MSIE 7.0b; Windows NT 5.2; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.2; .NET CLR 3.0.04506.30)'
+  test :IE, '7.0', :Windows, :'Windows XP', :msie, '7.0', "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.2)"
+  test :IE, '7.0', :Windows, :'Windows XP', :msie, '7.0', "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.2; MSOffice 12)"
   test :IE, '6.0b', :Windows, :'Windows XP',   :msie, '6.0b', 'Mozilla/4.0 (compatible; MSIE 6.0b; Windows NT 5.1)'
   test :IE, '6.0',  :Windows, :'Windows XP',   :msie, '6.0',  'Mozilla/5.0 (Windows; U; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)'
 
@@ -55,5 +57,20 @@ describe Agent do
   test :Firefox, '3.1', :Windows, :'Windows XP',  :gecko, '2009011606', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.6pre) Gecko/2009011606 Firefox/3.1'
   test :Firefox, '3.0', :Linux,   :Linux,         :gecko, '2008062315', 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9) Gecko/2008062315 (Gentoo) Firefox/3.0'
   test :Firefox, '2.0', :Linux,   :Linux,         :gecko, '20061202',   'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.8.1) Gecko/20061202 Firefox/2.0'
+
+  test :Chrome, '6.0.472.62',  :Macintosh, :'OS X 10.6',  :webkit, '534.3', "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.62 Safari/534.3"
+  test :Chrome, '6.0.472.63',  :Macintosh, :'OS X 10.6',  :webkit, '534.3', "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.63 Safari/534.3"
+  test :Chrome, '6.0.472.55',  :Linux,     :Linux,        :webkit, '534.3', "Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.55 Safari/534.3"
+  test :Chrome, '5.0.375.127', :Windows,   :'Windows XP', :webkit, '533.4', "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.127 Safari/533.4"
+  test :Chrome, '6.0.472.59',  :Windows,   :'Windows XP', :webkit, '534.3', "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.59 Safari/534.3"
+  test :Chrome, '6.0.472.53',  :Linux,     :Linux,        :webkit, '534.3', "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.53 Safari/534.3"
+
+  test :Firefox, '3.5.13', :Windows, :'Windows XP',    :gecko, '20100914', "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.13) Gecko/20100914 Firefox/3.5.13 (.NET CLR 3.5.30729)"
+  test :Firefox, '3.6.10', :Windows, :'Windows XP',    :gecko, '20100914', "Mozilla/5.0 (Windows; U; Windows NT 5.1; pt-BR; rv:1.9.2.10) Gecko/20100914 Firefox/3.6.10 GTB7.1"
+  test :Firefox, '3.6.10', :Windows, :'Windows Vista', :gecko, '20100914', "Mozilla/5.0 (Windows; U; Windows NT 6.0; pt-BR; rv:1.9.2.10) Gecko/20100914 Firefox/3.6.10 GTB7.1 ( .NET CLR 3.5.30729)"
+
+  test :Firefox, '3.6.8', :Linux, :Linux, :gecko, '20100723', "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.8) Gecko/20100723 Ubuntu/9.10 (karmic) Firefox/3.6.8"
+  test :Firefox, '3.6.9', :Linux, :Linux, :gecko, '20100824', "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.9) Gecko/20100824 Firefox/3.6.9"
+  test :Firefox, '3.6.9', :Linux, :Linux, :gecko, '20100825', "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.9) Gecko/20100825 Ubuntu/10.04 (lucid) Firefox/3.6.9"
 
 end

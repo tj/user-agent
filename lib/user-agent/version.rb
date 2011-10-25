@@ -1,3 +1,3 @@
-class Agent
-  VERSION = '1.0.2'
+module UserAgent
+  VERSION = '1.0.3'
 end

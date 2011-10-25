@@ -1,30 +1,23 @@
-# -*- encoding: utf-8 -*-
+$:.push File.expand_path('../lib', __FILE__)
+require 'user-agent/version'
 
 Gem::Specification.new do |s|
-  s.name = %q{cv-user-agent}
-  s.version = "1.0.2"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Carlos Villela"]
-  s.date = %q{2010-09-27}
-  s.description = %q{User agent parser}
-  s.email = %q{cv@lixo.org}
-  s.extra_rdoc_files = ["README.rdoc", "lib/user-agent.rb", "lib/user-agent/agent.rb", "lib/user-agent/version.rb", "tasks/docs.rake", "tasks/gemspec.rake", "tasks/spec.rake"]
-  s.files = ["Gemfile", "History.rdoc", "Manifest", "README.rdoc", "Rakefile", "lib/user-agent.rb", "lib/user-agent/agent.rb", "lib/user-agent/version.rb", "spec/agent_spec.rb", "spec/agents_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "tasks/docs.rake", "tasks/gemspec.rake", "tasks/spec.rake", "user-agent.gemspec", "cv-user-agent.gemspec"]
-  s.homepage = %q{}
-  s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Cv-user-agent", "--main", "README.rdoc"]
-  s.require_paths = ["lib"]
-  s.rubyforge_project = %q{cv-user-agent}
-  s.rubygems_version = %q{1.3.7}
-  s.summary = %q{User agent parser}
+  s.name = 'cv-user-agent'
+  s.version = UserAgent::VERSION
+  s.authors = ['Carlos Villela']
+  s.email = 'cvillela@thoughtworks.com'
+  s.homepage = 'http://github.com/cv/user-agent'
+  s.summary = 'User agent parser'
+  s.description = 'UserAgent is a user agent parser support most of the commonly used browsers today.'
+  s.rubyforge_project = 'cv-user-agent'
+  s.require_paths = ['lib']
 
-  if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
-    s.specification_version = 3
+  s.files = `git ls-files`.split("\n")
+  s.test_files = `git ls-files -- spec/*`.split("\n")
+  s.executables = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-    else
-    end
-  else
-  end
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rspec'
+
 end

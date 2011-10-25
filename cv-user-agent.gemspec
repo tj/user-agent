@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email = 'cvillela@thoughtworks.com'
   s.homepage = 'http://github.com/cv/user-agent'
   s.summary = 'User agent parser'
-  s.description = 'UserAgent is a user agent parser support most of the commonly used browsers today.'
+  s.description = 'user-agent is a user agent parser support most of the commonly used browsers today.'
   s.rubyforge_project = 'cv-user-agent'
   s.require_paths = ['lib']
 

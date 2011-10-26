@@ -1,9 +1,5 @@
 module UserAgent
 
-  def parse string
-    ParsedUserAgent.new string
-  end
-
   class ParsedUserAgent
 
     attr_reader :string

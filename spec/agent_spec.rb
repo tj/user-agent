@@ -1,14 +1,14 @@
 
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe UserAgent::Agent do
+describe UserAgent::ParsedUserAgent do
   before :each do
-    @agent = UserAgent::Agent.new 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_4; en-us) AppleWebKit/528.4+ (KHTML, like Gecko) Version/4.0dp1 Safari/526.11.2'
+    @agent = UserAgent::ParsedUserAgent.new 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_4; en-us) AppleWebKit/528.4+ (KHTML, like Gecko) Version/4.0dp1 Safari/526.11.2'
   end
 
   describe "#initialize" do
     it "should allow a user agent string to be passed" do
-      UserAgent::Agent.new('foo').string.should == 'foo'
+      UserAgent::ParsedUserAgent.new('foo').string.should == 'foo'
     end
   end
 
@@ -38,7 +38,7 @@ describe UserAgent::Agent do
 
   describe "#inspect" do
     it "should return string presenting the engine, os, version, etc" do
-      @agent.inspect.should == '#<Agent:Safari version:"4.0dp1" engine:"webkit:528.4" os:"OS X 10.5">'
+      @agent.inspect.should == '#<ParsedUserAgent:Safari version:"4.0dp1" engine:"webkit:528.4" os:"OS X 10.5">'
     end
   end
 
@@ -50,14 +50,14 @@ describe UserAgent::Agent do
 
   describe "#==" do
     it "should be equal when the user agent strings are the same" do
-      a = UserAgent::Agent.new 'foo'
-      b = UserAgent::Agent.new 'foo'
+      a = UserAgent::ParsedUserAgent.new 'foo'
+      b = UserAgent::ParsedUserAgent.new 'foo'
       a.should == b
     end
 
     it "should not be equal when user agent strings are different" do
-      a = UserAgent::Agent.new 'foo'
-      b = UserAgent::Agent.new 'bar'
+      a = UserAgent::ParsedUserAgent.new 'foo'
+      b = UserAgent::ParsedUserAgent.new 'bar'
       a.should_not == b
     end
   end

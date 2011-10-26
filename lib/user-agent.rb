@@ -23,3 +23,11 @@
 
 require 'user-agent/agent'
 require 'user-agent/version'
+
+module UserAgent
+
+  def self.parse string
+    ParsedUserAgent.new string
+  end
+
+end

@@ -1,6 +1,10 @@
 module UserAgent
 
-  class Agent
+  def parse string
+    ParsedUserAgent.new string
+  end
+
+  class ParsedUserAgent
 
     attr_reader :string
 
@@ -9,27 +13,27 @@ module UserAgent
     end
 
     def name
-      Agent.name_for_user_agent string
+      ParsedUserAgent.name_for_user_agent string
     end
 
     def version
-      Agent.version_for_user_agent string
+      ParsedUserAgent.version_for_user_agent string
     end
 
     def engine
-      Agent.engine_for_user_agent string
+      ParsedUserAgent.engine_for_user_agent string
     end
 
     def engine_version
-      Agent.engine_version_for_user_agent string
+      ParsedUserAgent.engine_version_for_user_agent string
     end
 
     def os
-      Agent.os_for_user_agent string
+      ParsedUserAgent.os_for_user_agent string
     end
 
     def platform
-      Agent.platform_for_user_agent string
+      ParsedUserAgent.platform_for_user_agent string
     end
 
     def to_s
@@ -37,7 +41,7 @@ module UserAgent
     end
 
     def inspect
-      "#<Agent:#{name} version:#{version.inspect} engine:\"#{engine.to_s}:#{engine_version}\" os:#{os.to_s.inspect}>"
+      "#<ParsedUserAgent:#{name} version:#{version.inspect} engine:\"#{engine.to_s}:#{engine_version}\" os:#{os.to_s.inspect}>"
     end
 
     def == other

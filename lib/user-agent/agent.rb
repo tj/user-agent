@@ -59,6 +59,12 @@ class Agent
   end
 
   ##
+  # Rails locale
+  def locale
+    $1.to_sym if Agent.language(string).to_s =~ /(\w+)/
+  end
+
+  ##
   # User agent string.
 
   def to_s

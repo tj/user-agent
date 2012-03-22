@@ -67,4 +67,10 @@ describe Agent do
       @agent.language.should eq 'en-us'
     end
   end
+
+  describe '#locale' do
+    it 'should return :en locale' do
+      @agent.locale.should eq :en
+    end
+  end
 end

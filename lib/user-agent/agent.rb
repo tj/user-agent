@@ -89,11 +89,12 @@ class Agent
 
   def self.version_for_user_agent string
     case name = name_for_user_agent(string)
-    when :Chrome ; $1 if string =~ /chrome\/([\d\w\.\-]+)/i
-    when :Safari ; $1 if string =~ /version\/([\d\w\.\-]+)/i
-    when :PS3    ; $1 if string =~ /([\d\w\.\-]+)\)\s*$/i
-    when :PSP    ; $1 if string =~ /([\d\w\.\-]+)\)?\s*$/i
-    else           $1 if string =~ /#{name}[\/ ]([\d\w\.\-]+)/i
+    when :Chrome              ; $1 if string =~ /chrome\/([\d\w\.\-]+)/i
+    when :Safari              ; $1 if string =~ /version\/([\d\w\.\-]+)/i
+    when :PS3                 ; $1 if string =~ /([\d\w\.\-]+)\)\s*$/i
+    when :'Internet Explorer' ; "#{$1}.#{$2}" if string =~ /rv:(\d+).(\d+)/i
+    when :PSP                 ; $1 if string =~ /([\d\w\.\-]+)\)?\s*$/i
+    else                         $1 if string =~ /#{name}[\/ ]([\d\w\.\-]+)/i
     end
   end
 
@@ -102,14 +103,15 @@ class Agent
 
   def self.engine_for_user_agent string
     case string
-    when /webkit/i    ; :webkit
-    when /khtml/i     ; :khtml
-    when /konqueror/i ; :konqueror
-    when /chrome/i    ; :chrome
-    when /presto/i    ; :presto
-    when /gecko/i     ; :gecko
-    when /msie/i      ; :msie
-    else                :unknown
+    when /webkit/i                ; :webkit
+    when /khtml/i                 ; :khtml
+    when /konqueror/i             ; :konqueror
+    when /chrome/i                ; :chrome
+    when /presto/i                ; :presto
+    when /trident\/(\d+).(\d+)/i  ; :trident
+    when /gecko/i                 ; :gecko
+    when /msie/i                  ; :msie
+    else                            :unknown
     end
   end
 
@@ -118,8 +120,10 @@ class Agent
 
   def self.os_for_user_agent string
     case string
+    when /windows nt 6\.3/i      ; :'Windows 8.1'
+    when /windows nt 6\.2/i      ; :'Windows 8'
+    when /windows nt 6\.1/i      ; :'Windows 7'
     when /windows nt 6\.0/i      ; :'Windows Vista'
-    when /windows nt 6\.\d+/i    ; :'Windows 7'
     when /windows nt 5\.2/i      ; :'Windows 2003'
     when /windows nt 5\.1/i      ; :'Windows XP'
     when /windows nt 5\.0/i      ; :'Windows 2000'
@@ -127,7 +131,7 @@ class Agent
     when /linux/i                ; :Linux
     when /wii/i                  ; :Wii
     when /playstation 3/i        ; :Playstation
-    when /playstation portable/i ; :Playstation
+    when /playstation portable/i ; :'Playstation Portable'
     else                         ; :Unknown
     end
   end
@@ -140,6 +144,7 @@ class Agent
     when /konqueror/i            ; :Konqueror
     when /chrome/i               ; :Chrome
     when /safari/i               ; :Safari
+    when /trident\/(\d+).(\d+)/i ; :'Internet Explorer'
     when /msie/i                 ; :IE
     when /opera/i                ; :Opera
     when /playstation 3/i        ; :PS3

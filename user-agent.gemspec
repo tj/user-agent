@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name = %q{user-agent}
-  s.version = "1.0.0"
+  s.version = "1.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
-  s.authors = ["TJ Holowaychuk"]
+  s.authors = ["TJ Holowaychuk", "Alex Reed"]
   s.date = %q{2009-10-08}
   s.description = %q{User agent parser}
   s.email = %q{tj@vision-media.ca}

@@ -21,5 +21,5 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
-require 'user-agent/agent'
-require 'user-agent/version'
+require 'modern-user-agent/agent'
+require 'modern-user-agent/version'

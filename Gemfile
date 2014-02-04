@@ -1,5 +1,3 @@
-source :gemcutter
+source :rubygems
 
-gem "rake"
-gem "echoe"
-gem "rspec"
+gemspec
